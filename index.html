@@ -28,7 +28,7 @@
             margin-bottom: 20px;
         }
         input[type="date"] {
-            width: 100%;
+            width: calc(100% - 24px);
             padding: 10px;
             margin: 10px 0;
             border: 2px solid #FFC0CB;
@@ -77,11 +77,6 @@
     </div>
 
     <script>
-        function calculateSaju(date) {
-            // 실제 사주 계산 로직을 여기에 구현해야 합니다.
-            return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
-        }
-
         function calculateCompatibility() {
             const birthdate1 = document.getElementById('birthdate1').value;
             const birthdate2 = document.getElementById('birthdate2').value;
@@ -90,12 +85,6 @@
                 alert('두 날짜를 모두 입력해주세요.');
                 return;
             }
-
-            const date1 = new Date(birthdate1);
-            const date2 = new Date(birthdate2);
-
-            const saju1 = calculateSaju(date1);
-            const saju2 = calculateSaju(date2);
 
             // 실제 궁합 계산 로직을 여기에 구현해야 합니다.
             // 현재는 랜덤한 점수를 생성합니다.
@@ -106,6 +95,11 @@
 
             resultElement.textContent = `궁합 점수: ${score}점`;
             heartsElement.textContent = '💖'.repeat(Math.ceil(score / 20));
+
+            // 디버깅을 위한 콘솔 로그
+            console.log('계산된 점수:', score);
+            console.log('표시된 결과:', resultElement.textContent);
+            console.log('표시된 하트:', heartsElement.textContent);
         }
     </script>
 </body>
