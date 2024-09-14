@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>궁합 점수 알아보기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFF0F5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #FF69B4;
+            margin-bottom: 20px;
+        }
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #FFC0CB;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #FF69B4;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #FF1493;
+        }
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF69B4;
+            margin-top: 20px;
+        }
+        .hearts {
+            font-size: 30px;
+            color: #FF69B4;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💖 궁합 점수 알아보기 💖</h1>
+        <div>
+            <input type="date" id="birthdate1">
+        </div>
+        <div>
+            <input type="date" id="birthdate2">
+        </div>
+        <button onclick="calculateCompatibility()">궁합 계산하기</button>
+        <div id="result" class="result"></div>
+        <div id="hearts" class="hearts"></div>
+    </div>
+
+    <script>
+        function calculateSaju(date) {
+            // 실제 사주 계산 로직을 여기에 구현해야 합니다.
+            return ${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일;
+        }
+
+        function calculateCompatibility() {
+            const birthdate1 = new Date(document.getElementById('birthdate1').value);
+            const birthdate2 = new Date(document.getElementById('birthdate2').value);
+
+            if (isNaN(birthdate1.getTime()) || isNaN(birthdate2.getTime())) {
+                alert('올바른 날짜를 입력해주세요.');
+                return;
+            }
+
+            const saju1 = calculateSaju(birthdate1);
+            const saju2 = calculateSaju(birthdate2);
+
+            // 실제 궁합 계산 로직을 여기에 구현해야 합니다.
+            // 현재는 랜덤한 점수를 생성합니다.
+            const score = Math.floor(Math.random() * 101);
+
+            const resultElement = document.getElementById('result');
+            const heartsElement = document.getElementById('hearts');
+
+            resultElement.textContent = 궁합 점수: ${score}점;
+            heartsElement.textContent = '💖'.repeat(Math.ceil(score / 20));
+        }
+    </script>
+</body>
+</html>
