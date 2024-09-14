@@ -79,20 +79,23 @@
     <script>
         function calculateSaju(date) {
             // 실제 사주 계산 로직을 여기에 구현해야 합니다.
-            return ${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일;
+            return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
         }
 
         function calculateCompatibility() {
-            const birthdate1 = new Date(document.getElementById('birthdate1').value);
-            const birthdate2 = new Date(document.getElementById('birthdate2').value);
+            const birthdate1 = document.getElementById('birthdate1').value;
+            const birthdate2 = document.getElementById('birthdate2').value;
 
-            if (isNaN(birthdate1.getTime()) || isNaN(birthdate2.getTime())) {
-                alert('올바른 날짜를 입력해주세요.');
+            if (!birthdate1 || !birthdate2) {
+                alert('두 날짜를 모두 입력해주세요.');
                 return;
             }
 
-            const saju1 = calculateSaju(birthdate1);
-            const saju2 = calculateSaju(birthdate2);
+            const date1 = new Date(birthdate1);
+            const date2 = new Date(birthdate2);
+
+            const saju1 = calculateSaju(date1);
+            const saju2 = calculateSaju(date2);
 
             // 실제 궁합 계산 로직을 여기에 구현해야 합니다.
             // 현재는 랜덤한 점수를 생성합니다.
@@ -101,7 +104,7 @@
             const resultElement = document.getElementById('result');
             const heartsElement = document.getElementById('hearts');
 
-            resultElement.textContent = 궁합 점수: ${score}점;
+            resultElement.textContent = `궁합 점수: ${score}점`;
             heartsElement.textContent = '💖'.repeat(Math.ceil(score / 20));
         }
     </script>
